@@ -15,8 +15,8 @@ class TournamentsController < ApplicationController
 
 	def create_matches
 		teams = @tournament.teams.pluck(:id, :name)
-		comb_teams = teams.combination(2).to_a
-		comb_teams.each do |combi|
+		comb_teams = teams.combination(2).to_a * params[:tournament][:number_of_matches].to_i
+		comb_teams.shuffle.each do |combi|
 			mat_teams = []
 			names = combi[0][1]+" v/s "+combi[1][1]
 			mat_teams << combi[0][0]
