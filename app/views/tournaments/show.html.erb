@@ -1,0 +1,6 @@
+<h1><%= @tournament.name %></h1>
+
+<%= link_to '<button class="btn btn-primary">Matches</button>'.html_safe, tournament_matches_path(@tournament.id), class: 'button-new' %>
+<%= link_to '<button class="btn btn-primary">Teams</button>'.html_safe, tournament_teams_path(@tournament.id), class: 'button-new' %>
+
+<%= link_to 'Back', tournaments_path %>
