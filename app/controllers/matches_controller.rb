@@ -20,7 +20,6 @@ class MatchesController < ApplicationController
 		@match.teams.delete(team_1.id)
 		t_id2 = @match.teams[0]
 		team_2 = Team.find_by(tournament_id: t_id, id: t_id2)
-		binding.pry
 		team_1.update_attributes(total_played: team_1.total_played+1, won: team_1.won+1)
 		team_2.update_attributes(total_played: team_2.total_played+1, lost: team_2.lost+1)
 	end
