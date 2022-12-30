@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_07_08_060901) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "matches", force: :cascade do |t|
     t.string "name"
     t.string "status", default: "not started"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_060901) do
     t.text "teams"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tournament_id", null: false
+    t.bigint "tournament_id", null: false
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
   end
 
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_060901) do
     t.float "against_overs", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tournament_id", null: false
+    t.bigint "tournament_id", null: false
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
